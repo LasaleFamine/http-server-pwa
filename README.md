@@ -1,5 +1,5 @@
 # http-server-pwa
-[![Build Status](https://travis-ci.org/LasaleFamine/http-server-pwa.svg?branch=master)](https://travis-ci.org/LasaleFamine/http-server-pwa) [![codecov](https://codecov.io/gh/LasaleFamine/http-server-pwa/badge.svg?branch=master)](https://codecov.io/gh/LasaleFamine/http-server-pwa?branch=master)
+[![Build Status](https://travis-ci.org/LasaleFamine/http-server-pwa.svg?branch=master)](https://travis-ci.org/LasaleFamine/http-server-pwa) [![Build status](https://ci.appveyor.com/api/projects/status/k5ssy06tt4ru1269?svg=true)](https://ci.appveyor.com/project/LasaleFamine/http-server-pwa) [![codecov](https://codecov.io/gh/LasaleFamine/http-server-pwa/badge.svg?branch=master)](https://codecov.io/gh/LasaleFamine/http-server-pwa?branch=master)
 
 > http-server alike but for serving and rendering PWA
 
