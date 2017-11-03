@@ -93,7 +93,7 @@ $ http-server-pwa --help
 
 	Options
 		-p --port       Port to use [Default: 8080]
-		-h --host       Host to use [Default: 0.0.0.0]
+		-h --host       Host to use [Default: 0.0.0.0 | Windows: localhost]
 		-f --fallback   Fallback HTML file name [Default: index.html]
 		-d --debug      Be more verbose [Default: false]
 		-h --help       Show this message
