@@ -1,0 +1,111 @@
+# http-server-pwa
+[![Build Status](https://travis-ci.org/LasaleFamine/http-server-pwa.svg?branch=master)](https://travis-ci.org/LasaleFamine/http-server-pwa) [![codecov](https://codecov.io/gh/LasaleFamine/http-server-pwa/badge.svg?branch=master)](https://codecov.io/gh/LasaleFamine/http-server-pwa?branch=master)
+
+> http-server alike but for serving and rendering PWA
+
+## What
+
+This is a different version (btw inspired by) of the insta-ready [http-server](https://github.com/indexzero/http-server), but with some key features to render Progressive Web Apps (or also SPA) correctly for bots like `googlebot` or Facebook crawlers, so your application can be crawled with its content already loaded. This should avoid the killing problem of the SEO for PWAs.
+
+**The server will render as normal, static ExpressJS server for your normal users.**
+
+Worth noting is that the server supports the `history-fallback` behavior. You maybe can avoid that ***#*** (hash) for your PWA navigation ✌️.
+
+## Features
+
+The server is not "dependecies-free" like the original http-server and instead is powered by [ExpressJS](https://github.com/expressjs/express) under the hood and [Puppeter](https://github.com/GoogleChrome/puppeteer/) for render the pages to bots.
+
+* [express-history-api-fallback](https://www.npmjs.com/package/express-history-api-fallback) - to fallback correctly to the `index.html`.
+* [pupperender](https://github.com/LasaleFamine/pupperender) - Puppeter middleware to render correctly the PWA content for the crawlers.
+
+## Usage
+
+You can use it programmatically or as a [CLI](#CLI) tool (global or local).
+
+## Install
+> NOTE: *Node >= 8.x is required*
+
+```
+$ yarn add http-server-pwa
+```
+
+## Usage
+
+```js
+const httpServerPwa = require('http-server-pwa');
+
+const server = await httpServerPwa('./dist', {p: 3000});
+//=> Server started -> ./dist 0.0.0.0:3000
+```
+
+## API
+
+### httpServerPwa(path, [options])
+
+#### path
+
+Type: `string`
+
+Path to serve.
+
+#### options
+
+##### p|port
+
+Type: `number`<br>
+Default: `8080`
+
+Port to use for running the server.
+
+##### h|host
+
+Type: `string`<br>
+Default: `0.0.0.0`
+
+Host to use for running the server.
+
+##### f|fallback
+
+Type: `string`<br>
+Default: `index.html`
+
+Fallback HTML file name.
+
+##### d|debug
+
+Type: `boolean`<br>
+Default: `false`
+
+If or not show some logs.
+
+
+## CLI
+
+```
+$ yarn add --global http-server-pwa
+```
+
+```
+$ http-server-pwa --help
+
+  Usage
+	  $ http-server-pwa [path] [options]
+
+	Options
+		-p --port       Port to use [Default: 8080]
+		-h --host       Host to use [Default: 0.0.0.0]
+		-f --fallback   Fallback HTML file name [Default: index.html]
+		-d --debug      Be more verbose [Default: false]
+		-h --help       Show this message
+
+	Examples
+	  $ http-server-pwa
+	  Server started -> ./ 0.0.0.0:8080
+	  $ http-server-pwa dist -p 3000
+	  Server started -> ./dist 0.0.0.0:3000
+```
+
+
+## License
+
+MIT © [LasaleFamine](https://godev.space)
