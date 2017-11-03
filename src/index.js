@@ -8,7 +8,7 @@ const pupperender = require('pupperender');
 const loggerMiddleware = require('./lib/logger-middleware');
 const log = require('./lib/log');
 
-const getStHost = () => process.platform === 'win32' ? 'localhost' : '0.0.0.0';
+const getStHost = () => process.platform === 'win32' ? '127.0.0.1' : '0.0.0.0';
 
 module.exports = (folder, options) => {
 	const opt = typeof options === 'object' ? Object.assign({}, options) : {};
