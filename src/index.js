@@ -8,13 +8,13 @@ const pupperender = require('pupperender');
 const loggerMiddleware = require('./lib/logger-middleware');
 const log = require('./lib/log');
 
-const getStHost = isWin => isWin ? 'localhost' : '0.0.0.0';
+const getStHost = () => process.platform === 'win32' ? 'localhost' : '0.0.0.0';
 
-module.exports = (folder, options, isWin) => {
+module.exports = (folder, options) => {
 	const opt = typeof options === 'object' ? Object.assign({}, options) : {};
 	const ROOT = resolve(folder || './');
 	const PORT = opt.p || opt.port || 8080;
-	const HOST = opt.h || opt.host || getStHost(isWin);
+	const HOST = opt.h || opt.host || getStHost();
 	const FALLINDEX = opt.f || opt.fallback || 'index.html';
 	const DEBUG = opt.d || opt.debug || false;
 
