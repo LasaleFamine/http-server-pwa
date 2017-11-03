@@ -51,9 +51,9 @@
 		"pupperender": "0.1.2"
 	},
 	"devDependencies": {
-		"ava": "0.20.0",
-		"codecov": "2.2.0",
-		"nyc": "11.0.0",
+		"ava": "0.23.0",
+		"codecov": "3.0.0",
+		"nyc": "11.3.0",
 		"standard-version": "4.2.0",
 		"supertest": "3.0.0",
 		"xo": "0.18.2"
