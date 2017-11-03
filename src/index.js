@@ -10,11 +10,11 @@ const log = require('./lib/log');
 
 const getStHost = isWin => isWin ? 'localhost' : '0.0.0.0';
 
-module.exports = (folder, options) => {
+module.exports = (folder, options, isWin) => {
 	const opt = typeof options === 'object' ? Object.assign({}, options) : {};
 	const ROOT = resolve(folder || './');
 	const PORT = opt.p || opt.port || 8080;
-	const HOST = opt.h || opt.host || getStHost(opt.win);
+	const HOST = opt.h || opt.host || getStHost(isWin);
 	const FALLINDEX = opt.f || opt.fallback || 'index.html';
 	const DEBUG = opt.d || opt.debug || false;
 

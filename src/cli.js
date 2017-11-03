@@ -43,5 +43,5 @@ const cli = meow(`
 	  Server started -> ./dist 0.0.0.0:3000
 `);
 
-httpServerPwa(cli.input[0], Object.assign({}, cli.flags, {win: IS_WIN}));
+httpServerPwa(cli.input[0], cli.flags, IS_WIN);
 
