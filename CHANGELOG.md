@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.1.2"></a>
+## [0.1.2](https://github.com/LasaleFamine/http-server-pwa/compare/v0.1.1...v0.1.2) (2017-12-30)
+
+
+### Bug Fixes
+
+* **package:** update meow to version 4.0.0 ([a9a5169](https://github.com/LasaleFamine/http-server-pwa/commit/a9a5169))
+* **package:** update pupperender to version 0.1.4 ([199bbde](https://github.com/LasaleFamine/http-server-pwa/commit/199bbde))
+
+
+
 <a name="0.1.1"></a>
 ## [0.1.1](https://github.com/LasaleFamine/http-server-pwa/compare/v0.1.0...v0.1.1) (2017-11-04)
 
