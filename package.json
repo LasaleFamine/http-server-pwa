@@ -47,13 +47,13 @@
     "chalk": "2.3.0",
     "express": "4.16.2",
     "express-history-api-fallback": "2.2.1",
-    "meow": "3.7.0",
+    "meow": "4.0.0",
     "pupperender": "0.1.4"
   },
   "devDependencies": {
-    "ava": "0.23.0",
+    "ava": "0.24.0",
     "codecov": "3.0.0",
-    "nyc": "11.3.0",
+    "nyc": "11.4.1",
     "standard-version": "4.2.0",
     "supertest": "3.0.0",
     "xo": "0.18.2"
