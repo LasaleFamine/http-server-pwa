@@ -4,7 +4,7 @@ const {resolve} = require('path');
 const supertest = require('supertest');
 const test = require('ava');
 
-const httpServer = require('../src/');
+const httpServer = require('./../src');
 
 const human = 'Chrome';
 

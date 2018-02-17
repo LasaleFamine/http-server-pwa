@@ -2,7 +2,7 @@
 
 const chalk = require('chalk');
 
-const log = console.log;
+const {log} = console;
 
 module.exports = {
 	info: msg => log(chalk.bold.grey(msg)),
