@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.1.4"></a>
+## [0.1.4](https://github.com/LasaleFamine/http-server-pwa/compare/v0.1.3...v0.1.4) (2018-05-09)
+
+
+### Bug Fixes
+
+* **package:** update chalk to version 2.3.1 ([ed350e3](https://github.com/LasaleFamine/http-server-pwa/commit/ed350e3))
+* **package:** update chalk to version 2.3.2 ([905e609](https://github.com/LasaleFamine/http-server-pwa/commit/905e609))
+* **package:** update chalk to version 2.4.0 ([5f398a2](https://github.com/LasaleFamine/http-server-pwa/commit/5f398a2))
+* **package:** update meow to version 4.0.1 ([b4a08c6](https://github.com/LasaleFamine/http-server-pwa/commit/b4a08c6))
+* **package:** update pupperender to version 1.1.1 ([9c3da01](https://github.com/LasaleFamine/http-server-pwa/commit/9c3da01)), closes [#16](https://github.com/LasaleFamine/http-server-pwa/issues/16)
+
+
+
 <a name="0.1.3"></a>
 ## [0.1.3](https://github.com/LasaleFamine/http-server-pwa/compare/v0.1.2...v0.1.3) (2018-01-17)
 
