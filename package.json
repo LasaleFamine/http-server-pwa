@@ -48,7 +48,7 @@
     "express": "4.16.2",
     "express-history-api-fallback": "2.2.1",
     "meow": "4.0.1",
-    "pupperender": "1.1.1"
+    "pupperender": "1.2.0"
   },
   "devDependencies": {
     "ava": "0.25.0",
