@@ -18,6 +18,7 @@ Worth noting is that the server supports the `history-fallback` behavior. You ma
 The server is not "dependecies-free" like the original http-server and instead is powered by [ExpressJS](https://github.com/expressjs/express) under the hood and [Puppeter](https://github.com/GoogleChrome/puppeteer/) for render the pages to bots.
 
 * [express-history-api-fallback](https://www.npmjs.com/package/express-history-api-fallback) - to fallback correctly to the `index.html`.
+* [express-https-redirect](https://www.npmjs.com/package/express-https-redirect) - automatically redirect `http` requests to `https`.
 * [pupperender](https://github.com/LasaleFamine/pupperender) - Puppeter middleware to render correctly the PWA content for the crawlers.
 
 ## Usage
@@ -73,6 +74,13 @@ Default: `index.html`
 
 Fallback HTML file name.
 
+##### s|https
+
+Type: `boolean`<br>
+Default: `false`
+
+Enable HTTPS redirect on `localhost`.
+
 ##### d|debug
 
 Type: `boolean`<br>
@@ -98,6 +106,7 @@ $ http-server-pwa --help
 		-h --host       Host to use [Default: 0.0.0.0 | Windows: localhost]
 		-f --fallback   Fallback HTML file name [Default: index.html]
 		-d --debug      Be more verbose [Default: false]
+		-s --https      Enable HTTPS redirect on localhost [Default: false]
 		-h --help       Show this message
 
 	Examples
