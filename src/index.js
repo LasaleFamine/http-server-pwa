@@ -36,7 +36,7 @@ module.exports = async (folder, options) => {
 	app.use(express.static(ROOT));
 	app.use(fallback(FALLINDEX, {root: ROOT}));
 
-	let ssl;
+	let ssl = null;
 
 	switch (true) {
 		case IS_DEV:
@@ -52,7 +52,8 @@ module.exports = async (folder, options) => {
 			// Pass
 	}
 
-	createServer(ssl, app).listen(
+	const server = ssl ? createServer(ssl, app) : app;
+	server.listen(
 		PORT,
 		HOST,
 		() => {

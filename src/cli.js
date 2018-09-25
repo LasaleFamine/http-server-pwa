@@ -35,6 +35,9 @@ const cli = meow(`
 		-f --fallback   Fallback HTML file name [Default: index.html]
 		-d --debug      Be more verbose [Default: false]
 		-s --https      Enable HTTPS redirect on localhost [Default: false]
+		-s --https      Enable HTTPS redirect on localhost [Default: false]
+		--pemKey        Path to your local .pem KEY [Default: null]
+		--pemCert       Path to your local .pem CERT [Default: null]
 		-h --help       Show this message
 
 	Examples

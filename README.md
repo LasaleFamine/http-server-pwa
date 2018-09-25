@@ -24,10 +24,10 @@ The server is not "dependecies-free" like the original http-server and instead i
 
 ## Production usage
 
-The server will not create any SSL certificate on the fly when setting `process.env.NODE_ENV = production`.
+The server will not create any SSL certificate on the fly when you set `process.env.NODE_ENV = production`.
 You have two alternatives here:
 - use [CloudFlare](https://cloudflare.com) free certification for your domain - easy peasy
-- pass down your `.pem` KEY and CERT path inside your local/production system
+- pass down to pwa-server your `.pem` KEY and CERT path inside your local/production system
 
 ## Usage
 
@@ -45,7 +45,7 @@ $ yarn add http-server-pwa
 ```js
 const httpServerPwa = require('http-server-pwa');
 
-const server = await httpServerPwa('./dist', {p: 3000});
+const {PORT, HOST} = await httpServerPwa('./dist', {p: 3000});
 //=> Server started -> ./dist 0.0.0.0:3000
 ```
 
@@ -129,6 +129,8 @@ $ http-server-pwa --help # or pwa-server --help
 		-f --fallback   Fallback HTML file name [Default: index.html]
 		-d --debug      Be more verbose [Default: false]
 		-s --https      Enable HTTPS redirect on localhost [Default: false]
+		--pemKey        Path to your local .pem KEY [Default: null]
+		--pemCert       Path to your local .pem CERT [Default: null]
 		-h --help       Show this message
 
 	Examples
