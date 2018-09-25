@@ -14,7 +14,10 @@
     "email": "info@godev.space",
     "url": "godev.space"
   },
-  "bin": "src/cli.js",
+  "bin": {
+		"http-server-pwa": "src/cli.js",
+		"pwa-server": "src/cli.js"
+	},
   "engines": {
     "node": ">=8"
   },
