@@ -18,8 +18,16 @@ Worth noting is that the server supports the `history-fallback` behavior. You ma
 The server is not "dependecies-free" like the original http-server and instead is powered by [ExpressJS](https://github.com/expressjs/express) under the hood and [Puppeter](https://github.com/GoogleChrome/puppeteer/) for render the pages to bots.
 
 * [express-history-api-fallback](https://www.npmjs.com/package/express-history-api-fallback) - to fallback correctly to the `index.html`.
-* [express-https-redirect](https://www.npmjs.com/package/express-https-redirect) - automatically redirect `http` requests to `https`.
+* [express-http-to-https](https://www.npmjs.com/package/express-http-to-https) - automatically redirect `http` requests to `https`.
+* [devcert](https://github.com/davewasmer/devcert) - Create development certificate on the fly for local `https`. *NOTE: you could be prompted to insert your password before starting the server. This is necessary of using OpenSSL. More info on devcert repository.*
 * [pupperender](https://github.com/LasaleFamine/pupperender) - Puppeter middleware to render correctly the PWA content for the crawlers.
+
+## Production usage
+
+The server will not create any SSL certificate on the fly when setting `process.env.NODE_ENV = production`.
+You have two alternatives here:
+- use [CloudFlare](https://cloudflare.com) free certification for your domain - easy peasy
+- pass down your `.pem` KEY and CERT path inside your local/production system
 
 ## Usage
 
@@ -80,6 +88,20 @@ Type: `boolean`<br>
 Default: `false`
 
 Enable HTTPS redirect on `localhost`.
+
+##### pemKey
+
+Type: `string`<br>
+Default: `null`
+
+Your `.pem` KEY file path for HTTPS during on production.
+
+##### pemCert
+
+Type: `string`<br>
+Default: `null`
+
+Your `.pem` CERT file path for HTTPS during on production.
 
 ##### d|debug
 
