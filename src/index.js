@@ -28,8 +28,9 @@ module.exports = async (folder, options) => {
 	const IS_DEV = process.env.NODE_ENV !== 'production';
 
 	const app = express();
-
-	app.use(redirectToHTTPS(LOCALHTTPS ? [] : [/localhost/]));
+  
+  // Don't redirect if the hostname is `localhost:port`
+  app.use(redirectToHTTPS(LOCALHTTPS ? [] : [/localhost/]));
 
 	app.use(loggerMiddleware(DEBUG));
 	app.use(pupperender.makeMiddleware({debug: DEBUG}));
