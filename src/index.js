@@ -22,8 +22,10 @@ module.exports = (folder, options) => {
 
 	const app = express();
 
-	// Don't redirect if the hostname is `localhost:port`
-	app.use(redirectToHTTPS(LOCALHTTPS ? [] : [/localhost/]));
+	if (process.env.NODE_ENV !== 'test') {
+		// Don't redirect if the hostname is `localhost:port`
+		app.use(redirectToHTTPS(LOCALHTTPS ? [] : [/localhost/]));
+	}
 
 	app.use(loggerMiddleware(DEBUG));
 	app.use(pupperender.makeMiddleware({debug: DEBUG}));
