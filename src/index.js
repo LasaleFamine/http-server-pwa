@@ -11,7 +11,7 @@ const log = require('./lib/log');
 const getStHost = () => process.platform === 'win32' ? '127.0.0.1' : '0.0.0.0';
 
 module.exports = (folder, options) => {
-	const opt = typeof options === 'object' ? Object.assign({}, options) : {};
+	const opt = typeof options === 'object' ? {...options} : {};
 	const ROOT = resolve(folder || './');
 	const PORT = opt.p || opt.port || 8080;
 	const HOST = opt.h || opt.host || getStHost();
