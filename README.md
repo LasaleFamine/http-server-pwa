@@ -96,7 +96,7 @@ $ yarn add --global http-server-pwa
 ```
 
 ```
-$ http-server-pwa --help
+$ http-server-pwa --help # or pwa-server --help
 
   Usage
 	  $ http-server-pwa [path] [options]
