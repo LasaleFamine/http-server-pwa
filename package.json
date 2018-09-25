@@ -1,6 +1,6 @@
 {
   "name": "http-server-pwa",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "http-server alike but for serving and rendering PWA. Built on top of ExpressJS",
   "license": "MIT",
   "repository": "LasaleFamine/http-server-pwa",
@@ -15,9 +15,9 @@
     "url": "godev.space"
   },
   "bin": {
-		"http-server-pwa": "src/cli.js",
-		"pwa-server": "src/cli.js"
-	},
+    "http-server-pwa": "src/cli.js",
+    "pwa-server": "src/cli.js"
+  },
   "engines": {
     "node": ">=8"
   },

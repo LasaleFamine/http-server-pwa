@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/LasaleFamine/http-server-pwa/compare/v0.1.4...v0.2.0) (2018-09-25)
+
+
+### Bug Fixes
+
+* **package:** update pupperender to version 1.2.0 ([1a2d5bf](https://github.com/LasaleFamine/http-server-pwa/commit/1a2d5bf))
+
+
+### Features
+
+* you can call it "pwa-server" (thanks [@moebiusmania](https://github.com/moebiusmania) for the idea) ([970bce2](https://github.com/LasaleFamine/http-server-pwa/commit/970bce2))
+
+
+
 <a name="0.1.4"></a>
 ## [0.1.4](https://github.com/LasaleFamine/http-server-pwa/compare/v0.1.3...v0.1.4) (2018-05-09)
 
