@@ -3,6 +3,7 @@
 const {resolve, join} = require('path');
 const express = require('express');
 const fallback = require('express-history-api-fallback');
+const httpsRedirect = require('express-https-redirect');
 const pupperender = require('pupperender');
 
 const loggerMiddleware = require('./lib/logger-middleware');
@@ -17,8 +18,13 @@ module.exports = (folder, options) => {
 	const HOST = opt.h || opt.host || getStHost();
 	const FALLINDEX = opt.f || opt.fallback || 'index.html';
 	const DEBUG = opt.d || opt.debug || false;
+	const LOCALHTTPS = opt.s || opt.https || false;
 
 	const app = express();
+
+	if (process.env.NODE_ENV !== 'test') {
+		app.use('/', httpsRedirect(LOCALHTTPS));
+	}
 
 	app.use(loggerMiddleware(DEBUG));
 	app.use(pupperender.makeMiddleware({debug: DEBUG}));

@@ -34,6 +34,7 @@ const cli = meow(`
 		-h --host       Host to use [Default: 0.0.0.0 | Windows: localhost]
 		-f --fallback   Fallback HTML file name [Default: index.html]
 		-d --debug      Be more verbose [Default: false]
+		-s --https      Enable HTTPS redirect on localhost [Default: false]
 		-h --help       Show this message
 
 	Examples
