@@ -3,7 +3,7 @@
 const {resolve, join} = require('path');
 const express = require('express');
 const fallback = require('express-history-api-fallback');
-const httpsRedirect = require('express-https-redirect');
+const {redirectToHTTPS} = require('express-http-to-https');
 const pupperender = require('pupperender');
 
 const loggerMiddleware = require('./lib/logger-middleware');
@@ -22,9 +22,8 @@ module.exports = (folder, options) => {
 
 	const app = express();
 
-	if (process.env.NODE_ENV !== 'test') {
-		app.use('/', httpsRedirect(LOCALHTTPS));
-	}
+	// Don't redirect if the hostname is `localhost:port`
+	app.use(redirectToHTTPS(LOCALHTTPS ? [] : [/localhost/]));
 
 	app.use(loggerMiddleware(DEBUG));
 	app.use(pupperender.makeMiddleware({debug: DEBUG}));
