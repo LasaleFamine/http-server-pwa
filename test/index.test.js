@@ -78,6 +78,7 @@ test('https redirect by default on not-localhost (with port and path specified)'
 	const {server, url} = await listen('./fixture',	{h: '0.0.0.0', p: port(5)});
 	const res = await get(human, url, '/something');
 	t.is(res.text, 'Found. Redirecting to https://0.0.0.0:8085/something');
+	t.is(res.status, 302);
 	server.close();
 });
 
@@ -85,5 +86,6 @@ test('https also on localhost', async t => {
 	const {server, url} = await listen('./fixture',	{h: 'localhost', p: port(6), s: true});
 	const res = await get(human, url, '/something');
 	t.is(res.text, 'Found. Redirecting to https://localhost:8086/something');
+	t.is(res.status, 302);
 	server.close();
 });
