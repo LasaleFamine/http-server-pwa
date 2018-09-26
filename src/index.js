@@ -1,9 +1,12 @@
 'use strict';
 
 const {resolve, join} = require('path');
+const {createServer} = require('https');
 const express = require('express');
 const fallback = require('express-history-api-fallback');
 const {redirectToHTTPS} = require('express-http-to-https');
+const certificate = require('devcert-san');
+
 const pupperender = require('pupperender');
 
 const loggerMiddleware = require('./lib/logger-middleware');
@@ -11,7 +14,7 @@ const log = require('./lib/log');
 
 const getStHost = () => process.platform === 'win32' ? '127.0.0.1' : 'localhost';
 
-module.exports = (folder, options) => {
+module.exports = async (folder, options) => {
 	const opt = typeof options === 'object' ? {...options} : {};
 	const ROOT = resolve(folder || './');
 	const PORT = opt.p || opt.port || 8080;
@@ -19,6 +22,8 @@ module.exports = (folder, options) => {
 	const FALLINDEX = opt.f || opt.fallback || 'index.html';
 	const DEBUG = opt.d || opt.debug || false;
 	const LOCALHTTPS = opt.s || opt.https || false;
+	const SSL = opt.ssl || false;
+	const IS_DEV = process.env.NODE_ENV !== 'production';
 
 	const app = express();
 
@@ -30,17 +35,21 @@ module.exports = (folder, options) => {
 	app.use(express.static(ROOT));
 	app.use(fallback(FALLINDEX, {root: ROOT}));
 
+	const sslCert = SSL && IS_DEV ?
+		await certificate.default('pwa-server', {installCertutil: true}) : null;
+
 	return new Promise(resolve => {
-		const server = app.listen(
+		const server = sslCert ? createServer(sslCert, app) : app;
+		const res = server.listen(
 			PORT,
 			HOST,
 			() => {
 				log.green('HSP started 🤘');
 				log.info(
-					`Path: ${ROOT} \nHost: http://${HOST}:${PORT} \nFalling on: ${join(ROOT, FALLINDEX)}`
+					`Path: ${ROOT} \nHost: ${sslCert ? 'https' : 'http'}://${HOST}:${PORT} \nFalling on: ${join(ROOT, FALLINDEX)}`
 				);
 				log.yellow('Hit CTRL-C to stop the server');
-				resolve(server);
+				resolve(res);
 			}
 		);
 	});
