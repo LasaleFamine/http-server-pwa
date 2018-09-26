@@ -1,6 +1,6 @@
 {
   "name": "http-server-pwa",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "http-server alike but for serving and rendering PWA. Built on top of ExpressJS",
   "license": "MIT",
   "repository": "LasaleFamine/http-server-pwa",
