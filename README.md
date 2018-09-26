@@ -17,10 +17,10 @@ Worth noting is that the server supports the `history-fallback` behavior. You ma
 
 The server is not "dependecies-free" like the original http-server and instead is powered by [ExpressJS](https://github.com/expressjs/express) under the hood and [Puppeter](https://github.com/GoogleChrome/puppeteer/) for render the pages to bots.
 
+* [pupperender](https://github.com/LasaleFamine/pupperender) - Puppeter middleware to render correctly the PWA content for the crawlers.
 * [express-history-api-fallback](https://www.npmjs.com/package/express-history-api-fallback) - to fallback correctly to the `index.html`.
 * [express-http-to-https](https://www.npmjs.com/package/express-http-to-https) - automatically redirect `http` requests to `https`.
-* [devcert](https://github.com/davewasmer/devcert) - Create development certificate on the fly for local `https`. *NOTE: you could be prompted to insert your password before starting the server. This is necessary of using OpenSSL. More info on devcert repository.*
-* [pupperender](https://github.com/LasaleFamine/pupperender) - Puppeter middleware to render correctly the PWA content for the crawlers.
+* [devcert](https://github.com/davewasmer/devcert) - Create development certificate on the fly for local `https`. **NOTE: you could be prompted to insert your password before starting the server. This is necessary of using OpenSSL. More info on devcert repository.**
 
 ## Production usage
 
