@@ -24,10 +24,12 @@ The server is not "dependecies-free" like the original http-server and instead i
 
 ## Production usage
 
-The server will not create any SSL certificate on the fly when you set `process.env.NODE_ENV = production`.
+The server will not create any SSL certificate on the fly when you set `process.env.NODE_ENV = production` even if `--ssl` flag is passed down.
 You have two alternatives here:
-- use [CloudFlare](https://cloudflare.com) free certification for your domain - easy peasy
-- pass down to pwa-server your `.pem` KEY and CERT path inside your local/production system
+- use a reverse proxy like [CloudFlare](https://cloudflare.com) and get free certification for your domain - easy peasy
+- use a custom reverse proxy like Nginx and load your certification from there
+
+I currently don't want to support a custom certificate load. PR are always welcome.
 
 ## Usage
 
@@ -89,19 +91,12 @@ Default: `false`
 
 Enable HTTPS redirect on `localhost`.
 
-##### pemKey
+##### ssl
 
-Type: `string`<br>
-Default: `null`
+Type: `boolean`<br>
+Default: `false`
 
-Your `.pem` KEY file path for HTTPS during on production.
-
-##### pemCert
-
-Type: `string`<br>
-Default: `null`
-
-Your `.pem` CERT file path for HTTPS during on production.
+Enable `devcert` auto-generation of SSL certification for development.
 
 ##### d|debug
 
@@ -128,9 +123,7 @@ $ http-server-pwa --help # or pwa-server --help
 		-h --host       Host to use [Default: localhost | Windows: 127.0.0.1]
 		-f --fallback   Fallback HTML file name [Default: index.html]
 		-d --debug      Be more verbose [Default: false]
-		-s --https      Enable HTTPS redirect on localhost [Default: false]
-		--pemKey        Path to your local .pem KEY [Default: null]
-		--pemCert       Path to your local .pem CERT [Default: null]
+		--ssl           Auto-generation SSL certificate during development [Default: false]
 		-h --help       Show this message
 
 	Examples

@@ -1,7 +1,6 @@
 'use strict';
 
 const {resolve, join} = require('path');
-const fs = require('fs');
 const {createServer} = require('https');
 const express = require('express');
 const fallback = require('express-history-api-fallback');
@@ -23,8 +22,7 @@ module.exports = async (folder, options) => {
 	const FALLINDEX = opt.f || opt.fallback || 'index.html';
 	const DEBUG = opt.d || opt.debug || false;
 	const LOCALHTTPS = opt.s || opt.https || false;
-	const PEM_KEY = opt.pemKey || null;
-	const PEM_CERT = opt.pemCert || null;
+	const SSL = opt.ssl || false;
 	const IS_DEV = process.env.NODE_ENV !== 'production';
 
 	const app = express();
@@ -37,50 +35,21 @@ module.exports = async (folder, options) => {
 	app.use(express.static(ROOT));
 	app.use(fallback(FALLINDEX, {root: ROOT}));
 
-	let ssl = null;
+	const sslCert = SSL && IS_DEV ?
+		await certificate.default('pwa-server', {installCertutil: true}) : null;
 
-	switch (true) {
-		case IS_DEV:
-			ssl = await certificate.default('pwa-server', {installCertutil: true});
-			break;
-		case PEM_KEY && PEM_CERT:
-			ssl = {
-				key: fs.readFileSync(resolve(PEM_KEY)),
-				cert: fs.readFileSync(resolve(PEM_CERT))
-			};
-			break;
-		default:
-			// Pass
-	}
-
-	const server = ssl ? createServer(ssl, app) : app;
-	server.listen(
-		PORT,
-		HOST,
-		() => {
-			log.green('HSP started 🤘');
-			log.info(
-				`Path: ${ROOT} \nHost: https://${HOST}:${PORT} \nFalling on: ${join(ROOT, FALLINDEX)}`
-			);
-			log.yellow('Hit CTRL-C to stop the server');
-		}
-	);
-
-	return {
-		PORT,
-		HOST
-	};
 	return new Promise(resolve => {
-		const server = app.listen(
+		const server = sslCert ? createServer(sslCert, app) : app;
+		const res = server.listen(
 			PORT,
 			HOST,
 			() => {
 				log.green('HSP started 🤘');
 				log.info(
-					`Path: ${ROOT} \nHost: http://${HOST}:${PORT} \nFalling on: ${join(ROOT, FALLINDEX)}`
+					`Path: ${ROOT} \nHost: ${sslCert ? 'https' : 'http'}://${HOST}:${PORT} \nFalling on: ${join(ROOT, FALLINDEX)}`
 				);
 				log.yellow('Hit CTRL-C to stop the server');
-				resolve(server);
+				resolve(res);
 			}
 		);
 	});

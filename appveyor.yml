@@ -9,6 +9,6 @@ test_script:
   - node --version
   - yarn --version
   - yarn
-  - yarn test
+  - yarn test:appveyor
 
 build: off
