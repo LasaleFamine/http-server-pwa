@@ -24,7 +24,7 @@ test.serial('not create a dev certificate on production also with ssl specified'
 		'./fixture',	{h: 'localhost', p: port(8), ssl: true}
 	);
 	const res = await t.throws(get(human, url, '/something'));
-	t.is(res.code, 'ECONNRESET');
+	t.is(res.response, undefined);
 
 	const resHTTP = await get(human, url.replace('https', 'http'), '/something');
 	t.is(resHTTP.text, 'some\n');
