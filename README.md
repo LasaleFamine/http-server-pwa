@@ -18,7 +18,7 @@ Worth noting is that the server supports the `history-fallback` behavior. You ma
 The server is not "dependecies-free" like the original http-server and instead is powered by [ExpressJS](https://github.com/expressjs/express) under the hood and [Puppeter](https://github.com/GoogleChrome/puppeteer/) for render the pages to bots.
 
 * [express-history-api-fallback](https://www.npmjs.com/package/express-history-api-fallback) - to fallback correctly to the `index.html`.
-* [express-https-redirect](https://www.npmjs.com/package/express-https-redirect) - automatically redirect `http` requests to `https`.
+* [express-http-to-https](https://www.npmjs.com/package/express-http-to-https) - automatically redirect `http` requests to `https`.
 * [pupperender](https://github.com/LasaleFamine/pupperender) - Puppeter middleware to render correctly the PWA content for the crawlers.
 
 ## Usage
@@ -38,7 +38,7 @@ $ yarn add http-server-pwa
 const httpServerPwa = require('http-server-pwa');
 
 const server = await httpServerPwa('./dist', {p: 3000});
-//=> Server started -> ./dist 0.0.0.0:3000
+//=> Server started -> ./dist localhost:3000
 ```
 
 ## API
@@ -63,7 +63,7 @@ Port to use for running the server.
 ##### h|host
 
 Type: `string`<br>
-Default: `0.0.0.0`
+Default: `localhost`
 
 Host to use for running the server.
 
@@ -103,7 +103,7 @@ $ http-server-pwa --help # or pwa-server --help
 
 	Options
 		-p --port       Port to use [Default: 8080]
-		-h --host       Host to use [Default: 0.0.0.0 | Windows: localhost]
+		-h --host       Host to use [Default: localhost | Windows: 127.0.0.1]
 		-f --fallback   Fallback HTML file name [Default: index.html]
 		-d --debug      Be more verbose [Default: false]
 		-s --https      Enable HTTPS redirect on localhost [Default: false]
@@ -111,9 +111,9 @@ $ http-server-pwa --help # or pwa-server --help
 
 	Examples
 	  $ http-server-pwa
-	  Server started -> ./ 0.0.0.0:8080
+	  Server started -> ./ localhost:8080
 	  $ http-server-pwa dist -p 3000
-	  Server started -> ./dist 0.0.0.0:3000
+	  Server started -> ./dist localhost:3000
 ```
 
 
