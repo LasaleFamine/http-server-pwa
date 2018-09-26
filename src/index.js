@@ -9,7 +9,7 @@ const pupperender = require('pupperender');
 const loggerMiddleware = require('./lib/logger-middleware');
 const log = require('./lib/log');
 
-const getStHost = () => process.platform === 'win32' ? '127.0.0.1' : '0.0.0.0';
+const getStHost = () => process.platform === 'win32' ? '127.0.0.1' : 'localhost';
 
 module.exports = (folder, options) => {
 	const opt = typeof options === 'object' ? {...options} : {};
@@ -22,26 +22,27 @@ module.exports = (folder, options) => {
 
 	const app = express();
 
-	if (process.env.NODE_ENV !== 'test') {
-		// Don't redirect if the hostname is `localhost:port`
-		app.use(redirectToHTTPS(LOCALHTTPS ? [] : [/localhost/]));
-	}
+	// Don't redirect if the hostname is `localhost` or `127.0.0.1`
+	app.use(redirectToHTTPS(LOCALHTTPS ? [] : [/localhost|127.0.0.1/]));
 
 	app.use(loggerMiddleware(DEBUG));
 	app.use(pupperender.makeMiddleware({debug: DEBUG}));
 	app.use(express.static(ROOT));
 	app.use(fallback(FALLINDEX, {root: ROOT}));
 
-	return app.listen(
-		PORT,
-		HOST,
-		() => {
-			log.green('HSP started 🤘');
-			log.info(
-				`Path: ${ROOT} \nHost: http://${HOST}:${PORT} \nFalling on: ${join(ROOT, FALLINDEX)}`
-			);
-			log.yellow('Hit CTRL-C to stop the server');
-		}
-	);
+	return new Promise(resolve => {
+		const server = app.listen(
+			PORT,
+			HOST,
+			() => {
+				log.green('HSP started 🤘');
+				log.info(
+					`Path: ${ROOT} \nHost: http://${HOST}:${PORT} \nFalling on: ${join(ROOT, FALLINDEX)}`
+				);
+				log.yellow('Hit CTRL-C to stop the server');
+				resolve(server);
+			}
+		);
+	});
 };
 

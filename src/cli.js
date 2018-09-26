@@ -31,7 +31,7 @@ const cli = meow(`
 
 	Options
 		-p --port       Port to use [Default: 8080]
-		-h --host       Host to use [Default: 0.0.0.0 | Windows: localhost]
+		-h --host       Host to use [Default: localhost | Windows: 127.0.0.1]
 		-f --fallback   Fallback HTML file name [Default: index.html]
 		-d --debug      Be more verbose [Default: false]
 		-s --https      Enable HTTPS redirect on localhost [Default: false]
@@ -39,9 +39,9 @@ const cli = meow(`
 
 	Examples
 	  $ http-server-pwa
-	  Server started -> ./ 0.0.0.0:8080
+	  Server started -> ./ localhost:8080
 	  $ http-server-pwa dist -p 3000
-	  Server started -> ./dist 0.0.0.0:3000
+	  Server started -> ./dist localhost:3000
 `);
 
 httpServerPwa(cli.input[0], cli.flags);
