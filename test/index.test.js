@@ -15,10 +15,10 @@ const human = 'Chrome';
  */
 const listen = async (folder, options) => {
 	const correctFolder = folder ? resolve(__dirname, folder) : null;
-	const server = await httpServer(correctFolder, options);
+	const server = await httpServer(correctFolder, {...options});
 	return {
 		server,
-		url: `${server.address().address}:${server.address().port}`
+		url: `${options.h}:${server.address().port}`
 	};
 };
 
@@ -35,7 +35,7 @@ const get = (userAgent, host, path) =>
 const port = n => 8080 + Number(n);
 
 test('should work with default params (./ 0.0.0.0:8080)', async t => {
-	const {server, url} = await listen();
+	const {server, url} = await listen(null, {h: 'localhost'});
 	const res = await get(human, url, '/');
 	t.is(res.status, 404, 'Not found because there is no index.html');
 	t.true(res.text.includes('Cannot GET'), 'Correct Cannot GET on no index.html');
@@ -43,14 +43,14 @@ test('should work with default params (./ 0.0.0.0:8080)', async t => {
 });
 
 test('should render correctly from folder', async t => {
-	const {server, url} = await listen('./fixture', {p: port(1)});
+	const {server, url} = await listen('./fixture', {h: 'localhost', p: port(1)});
 	const res = await get(human, url, '/');
 	t.is(res.text, 'some\n');
 	server.close();
 });
 
 test('should fallback correctly to index.html', async t => {
-	const {server, url} = await listen('./fixture', {port: port(2)});
+	const {server, url} = await listen('./fixture', {h: 'localhost', p: port(2)});
 	const res = await get(human, url, '/not-found');
 	t.is(res.text, 'some\n');
 	server.close();
@@ -65,8 +65,27 @@ test('works with specified host', async t => {
 });
 
 test('works with different fallback specified', async t => {
-	const {server, url} = await listen('./fixture', {p: port(4), f: 'different.html'});
+	const {server, url} = await listen(
+		'./fixture',
+		{h: 'localhost', p: port(4), f: 'different.html'}
+	);
 	const res = await get(human, url, '/something');
 	t.is(res.text, 'different fallback\n');
+	server.close();
+});
+
+test('https redirect by default on not-localhost (with port and path specified)', async t => {
+	const {server, url} = await listen('./fixture',	{h: '0.0.0.0', p: port(5)});
+	const res = await get(human, url, '/something');
+	t.is(res.text, 'Found. Redirecting to https://0.0.0.0:8085/something');
+	t.is(res.status, 302);
+	server.close();
+});
+
+test('https also on localhost', async t => {
+	const {server, url} = await listen('./fixture',	{h: 'localhost', p: port(6), s: true});
+	const res = await get(human, url, '/something');
+	t.is(res.text, 'Found. Redirecting to https://localhost:8086/something');
+	t.is(res.status, 302);
 	server.close();
 });
