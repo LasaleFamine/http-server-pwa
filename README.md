@@ -73,48 +73,14 @@ Path to serve.
 
 #### options
 
-##### p|port
-
-Type: `number`<br>
-Default: `8080`
-
-Port to use for running the server.
-
-##### h|host
-
-Type: `string`<br>
-Default: `localhost`
-
-Host to use for running the server.
-
-##### f|fallback
-
-Type: `string`<br>
-Default: `index.html`
-
-Fallback HTML file name.
-
-##### s|https
-
-Type: `boolean`<br>
-Default: `false`
-
-Enable HTTPS redirect on `localhost`.
-
-##### ssl
-
-Type: `boolean`<br>
-Default: `false`
-
-Enable `devcert` auto-generation of SSL certification for development.
-
-##### d|debug
-
-Type: `boolean`<br>
-Default: `false`
-
-If or not show some logs.
-
+| Name | CLI flag | Type | Default | Description |
+|------|--------------|------|---------|-------------|
+| port | p | `number` | `8080` | Port to use for running the server. |
+| host | h | `string` | `localhost` | Host to use for running the server. |
+| fallback | f | `string` | `index.html` | Fallback HTML file name. |
+| https | s | `boolean` | `false` | Enable HTTPS redirect on `localhost`.|
+| ssl |  | `boolean` | `false` | Enable `devcert` auto-generation of SSL certification for development.|
+| debug | d | `boolean` | `false` | If or not show some logs.|
 
 ## CLI
 
