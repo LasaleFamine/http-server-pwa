@@ -31,6 +31,16 @@ You have two alternatives here:
 
 I currently don't want to support a custom certificate load. PR are always welcome.
 
+## Deploy on Heroku
+
+In order to make the server work as expected on Heroku services (even on free tier) you must add [the puppeteer-heroku-buildpack](https://github.com/jontewks/puppeteer-heroku-buildpack).
+
+Since recent changes on the platform it is **strongly** suggested to add it from source rather than the buildpack's catalogs.
+
+```bash
+$ heroku buildpacks:set https://github.com/jontewks/puppeteer-heroku-buildpack.git
+```
+
 ## Usage
 
 You can use it programmatically or as a [CLI](#CLI) tool (global or local).
@@ -49,16 +59,6 @@ const httpServerPwa = require('http-server-pwa');
 
 const server = await httpServerPwa('./dist', {p: 3000});
 //=> Server started -> ./dist localhost:3000
-```
-
-## Deploy on Heroku
-
-In order to make the server work as expected on Heroku services (even on free tier) you must add [the puppeteer-heroku-buildpack](https://github.com/jontewks/puppeteer-heroku-buildpack).
-
-Since recent changes on the platform it is **strongly** suggested to add it from source rather than the buildpack's catalogs.
-
-```bash
-$ heroku buildpacks:set https://github.com/jontewks/puppeteer-heroku-buildpack.git
 ```
 
 ## API
