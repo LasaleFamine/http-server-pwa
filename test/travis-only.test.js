@@ -11,7 +11,7 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 test.serial('enable https devcert on develpment', async t => {
 	const {server, url} = await listen(
-		'./fixture',	{h: 'localhost', p: port(7), ssl: true}
+		'./fixture',	{h: 'localhost', p: port(20), ssl: true}
 	);
 	const res = await get(human, url, '/something');
 	t.is(res.text, 'some\n');
@@ -21,7 +21,7 @@ test.serial('enable https devcert on develpment', async t => {
 test.serial('not create a dev certificate on production also with ssl specified', async t => {
 	process.env.NODE_ENV = 'production';
 	const {server, url} = await listen(
-		'./fixture',	{h: 'localhost', p: port(8), ssl: true}
+		'./fixture',	{h: 'localhost', p: port(), ssl: true}
 	);
 	const res = await t.throws(get(human, url, '/something'));
 	t.is(res.response, undefined);

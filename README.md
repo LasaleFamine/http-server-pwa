@@ -80,6 +80,8 @@ Path to serve.
 | fallback | f | `string` | `index.html` | Fallback HTML file name. |
 | https | s | `boolean` | `false` | Enable HTTPS redirect on `localhost`.|
 | ssl |  | `boolean` | `false` | Enable `devcert` auto-generation of SSL certification for development.|
+| cache | c | `boolean` | `false` | Enable cache for Puppeteer rendering|
+| cacheTTL |  | `number` | `3600` (s) | Seconds until cached content is disregarded and puppeterized again. Only considered when useCache is true.|
 | debug | d | `boolean` | `false` | If or not show some logs.|
 
 ## CLI
@@ -98,8 +100,11 @@ $ http-server-pwa --help # or pwa-server --help
 		-p --port       Port to use [Default: 8080]
 		-h --host       Host to use [Default: localhost | Windows: 127.0.0.1]
 		-f --fallback   Fallback HTML file name [Default: index.html]
-		-d --debug      Be more verbose [Default: false]
+		-s --https      Enable HTTPS redirect on localhost [Default: false]
 		--ssl           Auto-generation SSL certificate during development [Default: false]
+		-c --cache      Enable cache for Puppeteer rendering [Default: false]
+		--cacheTTL      Seconds until cached content is disregarded and puppeterized again [Default: 3600 (s)].
+		-d --debug      Be more verbose [Default: false]
 		-h --help       Show this message
 
 	Examples
