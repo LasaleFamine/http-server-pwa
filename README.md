@@ -81,7 +81,7 @@ Path to serve.
 | https | s | `boolean` | `false` | Enable HTTPS redirect on `localhost`.|
 | ssl |  | `boolean` | `false` | Enable `devcert` auto-generation of SSL certification for development.|
 | cache | c | `boolean` | `false` | Enable cache for Puppeteer rendering|
-| cacheTTL |  | `number` | `3600` (s) | Seconds until cached content is disregarded and puppeterized again. Only considered when useCache is true.|
+| cacheTTL |  | `number` | `3600` (s) | Seconds until cached content is disregarded and puppeterized again. Only considered when `cache` is true.|
 | debug | d | `boolean` | `false` | If or not show some logs.|
 
 ## CLI
