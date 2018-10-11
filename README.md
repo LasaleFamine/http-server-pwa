@@ -1,4 +1,4 @@
-![PWA Server](pwa-server.svg?raw=true "PWA Server")
+![PWA Server](pwa-server.svg?raw=true&sanitize=true"PWA Server")
 
 # http-server-pwa aka pwa-server
 [![Greenkeeper badge](https://badges.greenkeeper.io/LasaleFamine/http-server-pwa.svg)](https://greenkeeper.io/)
