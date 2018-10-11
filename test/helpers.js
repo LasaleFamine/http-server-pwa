@@ -3,6 +3,8 @@ const supertest = require('supertest');
 
 const httpServer = require('./../src');
 
+let lastNumberPort = 1;
+
 /**
  * Create the server.
  * @param {!Object} app The app.
@@ -27,4 +29,12 @@ exports.listen = async (folder, options) => {
 exports.get = (userAgent, host, path) =>
 	supertest(host).get(path).set('User-Agent', userAgent);
 
-exports.port = n => 8080 + Number(n);
+exports.port = customInit => {
+	if (customInit) {
+		lastNumberPort = customInit;
+	}
+
+	const port = lastNumberPort;
+	lastNumberPort++;
+	return 8080 + Number(port);
+};

@@ -22,6 +22,8 @@ module.exports = async (folder, options) => {
 	const FALLINDEX = opt.f || opt.fallback || 'index.html';
 	const DEBUG = opt.d || opt.debug || false;
 	const LOCALHTTPS = opt.s || opt.https || false;
+	const CACHE = opt.c || opt.cache || false;
+	const CACHE_TTL = opt.cacheTTL || 3600;
 	const SSL = opt.ssl || false;
 	const IS_DEV = process.env.NODE_ENV !== 'production';
 
@@ -31,7 +33,7 @@ module.exports = async (folder, options) => {
 	app.use(redirectToHTTPS(LOCALHTTPS ? [] : [/localhost|127.0.0.1/]));
 
 	app.use(loggerMiddleware(DEBUG));
-	app.use(pupperender.makeMiddleware({debug: DEBUG}));
+	app.use(pupperender.makeMiddleware({debug: DEBUG, useCache: CACHE, cacheTTL: CACHE_TTL}));
 	app.use(express.static(ROOT));
 	app.use(fallback(FALLINDEX, {root: ROOT}));
 
