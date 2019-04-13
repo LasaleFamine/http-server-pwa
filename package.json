@@ -19,7 +19,7 @@
     "pwa-server": "src/cli.js"
   },
   "engines": {
-    "node": ">=8"
+    "node": ">=10"
   },
   "scripts": {
     "release": "git pull && standard-version",
