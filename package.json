@@ -50,19 +50,19 @@
   "dependencies": {
     "chalk": "2.4.2",
     "devcert-san": "0.3.3",
-    "express": "4.16.2",
+    "express": "4.16.4",
     "express-history-api-fallback": "2.2.1",
     "express-http-to-https": "1.1.4",
-    "meow": "4.0.1",
-    "pupperender": "1.2.1"
+    "meow": "5.0.0",
+    "pupperender": "1.2.2"
   },
   "devDependencies": {
-    "ava": "1.0.1",
-    "codecov": "3.1.0",
-    "nyc": "12.0.2",
-    "standard-version": "4.4.0",
-    "supertest": "3.3.0",
-    "xo": "0.23.0"
+    "ava": "1.4.1",
+    "codecov": "3.3.0",
+    "nyc": "13.3.0",
+    "standard-version": "5.0.2",
+    "supertest": "4.0.2",
+    "xo": "0.24.0"
   },
   "xo": {
     "rules": {
