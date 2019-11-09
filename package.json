@@ -48,7 +48,7 @@
     "bot-render"
   ],
   "dependencies": {
-    "chalk": "2.4.2",
+    "chalk": "3.0.0",
     "devcert-san": "0.3.3",
     "express": "4.16.2",
     "express-history-api-fallback": "2.2.1",
