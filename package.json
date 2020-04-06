@@ -59,6 +59,7 @@
   "devDependencies": {
     "ava": "3.6.0",
     "codecov": "3.6.5",
+    "get-port": "5.1.1",
     "nyc": "15.0.1",
     "standard-version": "7.1.0",
     "supertest": "4.0.2",
