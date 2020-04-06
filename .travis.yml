@@ -2,8 +2,7 @@ sudo: true
 
 language: node_js
 node_js:
-  - 'node'
-  - '8'
+  - '12.16.1'
 script:
   - yarn test:travis
 

@@ -3,13 +3,13 @@
 const log = require('./log');
 
 module.exports = DEBUG => {
-	return function (req, res, next) {
+	return function (request, _, next) {
 		if (!DEBUG) {
 			return next();
 		}
 
 		const date = new Date();
-		log.cyan(`[HSP info ${date}] ${req.url}`);
+		log.cyan(`[HSP info ${date}] ${request.url}`);
 		next();
 	};
 };
