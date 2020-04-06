@@ -42,7 +42,7 @@ module.exports = async (folder, options) => {
 
 	return new Promise(resolve => {
 		const server = sslCert ? createServer(sslCert, app) : app;
-		const res = server.listen(
+		const response = server.listen(
 			PORT,
 			HOST,
 			() => {
@@ -51,7 +51,7 @@ module.exports = async (folder, options) => {
 					`Path: ${ROOT} \nHost: ${sslCert ? 'https' : 'http'}://${HOST}:${PORT} \nFalling on: ${join(ROOT, FALLINDEX)}`
 				);
 				log.yellow('Hit CTRL-C to stop the server');
-				resolve(res);
+				resolve(response);
 			}
 		);
 	});

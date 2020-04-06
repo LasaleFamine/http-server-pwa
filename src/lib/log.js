@@ -5,9 +5,9 @@ const chalk = require('chalk');
 const {log} = console;
 
 module.exports = {
-	info: msg => log(chalk.bold.grey(msg)),
-	yellow: msg => log(chalk.bold.yellow(msg)),
-	red: msg => log(chalk.red(msg)),
-	cyan: msg => log(chalk.cyan(msg)),
-	green: msg => log(chalk.bold.green(msg))
+	info: message => log(chalk.bold.grey(message)),
+	yellow: message => log(chalk.bold.yellow(message)),
+	red: message => log(chalk.red(message)),
+	cyan: message => log(chalk.cyan(message)),
+	green: message => log(chalk.bold.green(message))
 };

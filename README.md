@@ -1,7 +1,6 @@
 # http-server-pwa aka pwa-server
-[![Greenkeeper badge](https://badges.greenkeeper.io/LasaleFamine/http-server-pwa.svg)](https://greenkeeper.io/)
 
-[![npm](https://img.shields.io/npm/v/http-server-pwa.svg?style=flat)](https://github.com/LasaleFamine/http-server-pwa) [![Build Status](https://travis-ci.org/LasaleFamine/http-server-pwa.svg?branch=master&style=flat)](https://travis-ci.org/LasaleFamine/http-server-pwa) [![Build status](https://ci.appveyor.com/api/projects/status/k5ssy06tt4ru1269?svg=true&style=flat)](https://ci.appveyor.com/project/LasaleFamine/http-server-pwa) [![codecov](https://codecov.io/gh/LasaleFamine/http-server-pwa/badge.svg?branch=master&style=flat)](https://codecov.io/gh/LasaleFamine/http-server-pwa?branch=master)
+[![npm](https://img.shields.io/npm/v/http-server-pwa.svg?style=flat)](https://github.com/LasaleFamine/http-server-pwa) [![Build Status](https://travis-ci.com/LasaleFamine/http-server-pwa.svg?branch=master&style=flat)](https://travis-ci.com/LasaleFamine/http-server-pwa) [![Build status](https://ci.appveyor.com/api/projects/status/k5ssy06tt4ru1269?svg=true&style=flat)](https://ci.appveyor.com/project/LasaleFamine/http-server-pwa) [![codecov](https://codecov.io/gh/LasaleFamine/http-server-pwa/badge.svg?branch=master&style=flat)](https://codecov.io/gh/LasaleFamine/http-server-pwa?branch=master)
 
 > http-server alike but for serving and rendering PWA: pwa-server
 
@@ -46,7 +45,6 @@ $ heroku buildpacks:set https://github.com/jontewks/puppeteer-heroku-buildpack.g
 You can use it programmatically or as a [CLI](#CLI) tool (global or local).
 
 ## Install
-> NOTE: *Node >= 8.x is required*
 
 ```
 $ yarn add http-server-pwa
