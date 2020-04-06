@@ -1,6 +1,13 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [2.0.0](https://github.com/LasaleFamine/http-server-pwa/compare/v1.0.1...v2.0.0) (2020-04-06)
+
+
+### Bug Fixes
+
+* **package:** update chalk to version 2.4.2 ([813c663](https://github.com/LasaleFamine/http-server-pwa/commit/813c663ce72fb9e04debafdcd3a0a11f5ce0abe1))
 
 <a name="1.0.1"></a>
 ## [1.0.1](https://github.com/LasaleFamine/http-server-pwa/compare/v1.0.0...v1.0.1) (2019-01-04)
