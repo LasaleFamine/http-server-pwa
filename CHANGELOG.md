@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.1](https://github.com/LasaleFamine/http-server-pwa/compare/v2.0.0...v2.0.1) (2020-10-01)
+
+
+### Bug Fixes
+
+* upgrade chalk from 4.0.0 to 4.1.0 ([e33db50](https://github.com/LasaleFamine/http-server-pwa/commit/e33db5055fdb362cf1b7cffe1629bed1d3070322))
+* upgrade meow from 6.1.0 to 6.1.1 ([797e946](https://github.com/LasaleFamine/http-server-pwa/commit/797e94688ce18a38d3393faf51dadcd48c2b7b69))
+* upgrade meow from 6.1.0 to 6.1.1 ([de5b58f](https://github.com/LasaleFamine/http-server-pwa/commit/de5b58f778c3bdc226f21d63c94abaa15826449b))
+
 ## [2.0.0](https://github.com/LasaleFamine/http-server-pwa/compare/v1.0.1...v2.0.0) (2020-04-06)
 
 
