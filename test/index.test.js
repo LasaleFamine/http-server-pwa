@@ -82,7 +82,9 @@ test('cache results respect TTL', async t => {
 	const response = await get(bot, url, '/something');
 	t.is(response.status, 200);
 	t.false(Boolean(response.get('Expires')));
-	await new Promise(resolve => setTimeout(resolve, 2000));
+	await new Promise(resolve => {
+		setTimeout(resolve, 2000);
+	});
 	const cachedResponse = await get(bot, url, '/something');
 	t.is(cachedResponse.status, 200);
 	t.false(Boolean(cachedResponse.get('Expires')));
