@@ -81,6 +81,10 @@ Path to serve.
 | cache | c | `boolean` | `false` | Enable cache for Puppeteer rendering|
 | cacheTTL |  | `number` | `3600` (s) | Seconds until cached content is disregarded and puppeterized again. Only considered when `cache` is true.|
 | debug | d | `boolean` | `false` | If or not show some logs.|
+| gzip | g | `boolean` | `false` | Enable serving of gzipped files if available|
+| brotli | b | `boolean` | `false` | Enable serving of brotli compressed files if available|
+
+> Note: If the gzip and brotli option are both toggled, brotli compressed files will get precedence over gzipped files.
 
 ## CLI
 
@@ -103,6 +107,8 @@ $ http-server-pwa --help # or pwa-server --help
 		-c --cache      Enable cache for Puppeteer rendering [Default: false]
 		--cacheTTL      Seconds until cached content is disregarded and puppeterized again [Default: 3600 (s)].
 		-d --debug      Be more verbose [Default: false]
+		-g --gzip	Enable serving of gzipped files if available [Default: false]
+		-b --brotli	Enable serving of brotli compressed files if available [Default: false]
 		-h --help       Show this message
 
 	Examples

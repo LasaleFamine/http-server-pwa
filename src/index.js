@@ -11,6 +11,7 @@ const pupperender = require('pupperender');
 
 const loggerMiddleware = require('./lib/logger-middleware');
 const log = require('./lib/log');
+const {getStaticMiddleware} = require('./lib/static-middleware');
 
 const getStHost = () => process.platform === 'win32' ? '127.0.0.1' : 'localhost';
 
@@ -26,6 +27,8 @@ module.exports = async (folder, options) => {
 	const CACHE_TTL = opt.cacheTTL || 3600;
 	const SSL = opt.ssl || false;
 	const IS_DEV = process.env.NODE_ENV !== 'production';
+	const GZIP = opt.gzip || opt.g || false;
+	const BROTLI = opt.brotli || opt.b || false;
 
 	const app = express();
 
@@ -34,7 +37,7 @@ module.exports = async (folder, options) => {
 
 	app.use(loggerMiddleware(DEBUG));
 	app.use(pupperender.makeMiddleware({debug: DEBUG, useCache: CACHE, cacheTTL: CACHE_TTL}));
-	app.use(express.static(ROOT));
+	app.use(getStaticMiddleware(ROOT, {GZIP, BROTLI}));
 	app.use(fallback(FALLINDEX, {root: ROOT}));
 
 	const sslCert = SSL && IS_DEV ?
