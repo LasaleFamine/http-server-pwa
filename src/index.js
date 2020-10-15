@@ -5,13 +5,13 @@ const {createServer} = require('https');
 const express = require('express');
 const fallback = require('express-history-api-fallback');
 const {redirectToHTTPS} = require('express-http-to-https');
-const staticWithCompression = require('express-static-gzip');
 const certificate = require('devcert-san');
 
 const pupperender = require('pupperender');
 
 const loggerMiddleware = require('./lib/logger-middleware');
 const log = require('./lib/log');
+const {getStaticMiddleware} = require('./lib/static-middleware');
 
 const getStHost = () => process.platform === 'win32' ? '127.0.0.1' : 'localhost';
 
@@ -37,15 +37,7 @@ module.exports = async (folder, options) => {
 
 	app.use(loggerMiddleware(DEBUG));
 	app.use(pupperender.makeMiddleware({debug: DEBUG, useCache: CACHE, cacheTTL: CACHE_TTL}));
-	if (GZIP || BROTLI) {
-		const compression = {orderPreference: ["identity"]};
-		GZIP && (compression.orderPreference.unshift('gzip'));
-		BROTLI && ((compression.enableBrotli = true), (compression.orderPreference.unshift('br')));
-		DEBUG && (console.log('compression settings: ', compression));
-		app.use(staticWithCompression(ROOT, compression));
-	} else {
-		app.use(express.static(ROOT));
-	}
+	app.use(getStaticMiddleware(ROOT, {GZIP, BROTLI}));
 	app.use(fallback(FALLINDEX, {root: ROOT}));
 
 	const sslCert = SSL && IS_DEV ?
