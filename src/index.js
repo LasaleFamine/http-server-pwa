@@ -5,6 +5,7 @@ const {createServer} = require('https');
 const express = require('express');
 const fallback = require('express-history-api-fallback');
 const {redirectToHTTPS} = require('express-http-to-https');
+const staticWithCompression = require('express-static-gzip');
 const certificate = require('devcert-san');
 
 const pupperender = require('pupperender');
@@ -26,6 +27,8 @@ module.exports = async (folder, options) => {
 	const CACHE_TTL = opt.cacheTTL || 3600;
 	const SSL = opt.ssl || false;
 	const IS_DEV = process.env.NODE_ENV !== 'production';
+	const GZIP = opt.gzip || opt.g || false;
+	const BROTLI = opt.brotli || opt.b || false;
 
 	const app = express();
 
@@ -34,7 +37,15 @@ module.exports = async (folder, options) => {
 
 	app.use(loggerMiddleware(DEBUG));
 	app.use(pupperender.makeMiddleware({debug: DEBUG, useCache: CACHE, cacheTTL: CACHE_TTL}));
-	app.use(express.static(ROOT));
+	if (GZIP || BROTLI) {
+		const compression = {orderPreference: ["identity"]};
+		GZIP && (compression.orderPreference.unshift('gzip'));
+		BROTLI && ((compression.enableBrotli = true), (compression.orderPreference.unshift('br')));
+		console.log(compression);
+		app.use(staticWithCompression(ROOT, compression));
+	} else {
+		app.use(express.static(ROOT));
+	}
 	app.use(fallback(FALLINDEX, {root: ROOT}));
 
 	const sslCert = SSL && IS_DEV ?
