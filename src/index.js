@@ -41,7 +41,7 @@ module.exports = async (folder, options) => {
 		const compression = {orderPreference: ["identity"]};
 		GZIP && (compression.orderPreference.unshift('gzip'));
 		BROTLI && ((compression.enableBrotli = true), (compression.orderPreference.unshift('br')));
-		DEBUG && console.log('compression settings: ', compression);
+		DEBUG && (console.log('compression settings: ', compression));
 		app.use(staticWithCompression(ROOT, compression));
 	} else {
 		app.use(express.static(ROOT));
