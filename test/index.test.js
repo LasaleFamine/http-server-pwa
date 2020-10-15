@@ -2,7 +2,7 @@
 
 const test = require('ava');
 // eslint-disable-next-line ava/no-import-test-files
-const {listen, get, port} = require('./helpers');
+const {listen, get, getWithEncoding, port} = require('./helpers');
 
 const human = 'Chrome';
 const bot = 'slackbot';
@@ -88,5 +88,29 @@ test('cache results respect TTL', async t => {
 	const cachedResponse = await get(bot, url, '/something');
 	t.is(cachedResponse.status, 200);
 	t.false(Boolean(cachedResponse.get('Expires')));
+	server.close();
+});
+
+test('gzip', async t => {
+	const {server, url} = await listen('./fixture',	{h: 'localhost', p: await port(), g: true});
+	const response = await getWithEncoding(human, url, '/compression.html');
+	t.is(response.status, 200);
+	t.true(Boolean(response.headers['content-encoding'] === 'gzip'));
+	server.close();
+});
+
+test('brotli', async t => {
+	const {server, url} = await listen('./fixture',	{h: 'localhost', p: await port(), b: true});
+	const response = await getWithEncoding(human, url, '/compression.html');
+	t.is(response.status, 200);
+	t.true(Boolean(response.headers['content-encoding'] === 'br'));
+	server.close();
+});
+
+test('brotli > gzip', async t => {
+	const {server, url} = await listen('./fixture',	{h: 'localhost', p: await port(), g: true, b: true});
+	const response = await getWithEncoding(human, url, '/compression.html');
+	t.is(response.status, 200);
+	t.true(Boolean(response.headers['content-encoding'] === 'br'));
 	server.close();
 });

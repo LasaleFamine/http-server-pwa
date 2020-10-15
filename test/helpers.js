@@ -28,4 +28,7 @@ exports.listen = async (folder, options) => {
 exports.get = (userAgent, host, path) =>
 	supertest(host).get(path).set('User-Agent', userAgent);
 
+exports.getWithEncoding = (userAgent, host, path) =>
+	supertest(host).get(path).set('User-Agent', userAgent).set('Accept-Encoding', 'br, gzip, deflate, identity');
+
 exports.port = () => getPort();
