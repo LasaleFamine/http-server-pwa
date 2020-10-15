@@ -38,9 +38,9 @@ const cli = meow(`
 		-c --cache      Enable cache for Puppeteer rendering [Default: false]
 		--cacheTTL      Seconds until cached content is disregarded and puppeterized again [Default: 3600 (s)].
 		-d --debug      Be more verbose [Default: false]
-		-h --help       Show this message
 		-g --gzip		Enable serving of gzipped files if available [Default: false]
 		-b --brotli		Enable serving of brotli compressed files if available [Default: false]
+		-h --help       Show this message
 
 	Examples
 	  $ http-server-pwa
