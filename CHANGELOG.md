@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/LasaleFamine/http-server-pwa/compare/v2.0.1...v2.1.0) (2020-10-15)
+
+
+### Bug Fixes
+
+* indentation ([eb540d2](https://github.com/LasaleFamine/http-server-pwa/commit/eb540d298340969fe44eb65defddda2370e96048))
+
 ### [2.0.1](https://github.com/LasaleFamine/http-server-pwa/compare/v2.0.0...v2.0.1) (2020-10-01)
 
 
