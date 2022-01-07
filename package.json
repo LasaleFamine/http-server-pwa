@@ -50,7 +50,7 @@
   "dependencies": {
     "chalk": "4.1.0",
     "devcert-san": "0.3.3",
-    "express": "4.17.1",
+    "express": "4.17.2",
     "express-history-api-fallback": "2.2.1",
     "express-http-to-https": "1.1.4",
     "express-static-gzip": "2.0.8",
